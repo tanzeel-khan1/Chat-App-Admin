@@ -1,54 +1,3 @@
-// import React from "react";
-// import { useAllChats } from "../Hooks/Message";
-// import { useDeleteMessage } from "../Hooks/useDeleteMessage";
-
-// const Message = () => {
-//   const { messages, loading, error, refetch } = useAllChats();
-//   const { deleteMessage, loading: deleteLoading } = useDeleteMessage();
-
-//   const handleDelete = async (id) => {
-//     try {
-//       await deleteMessage(id);
-//       refetch(); // delete ke baad chats reload
-//     } catch (err) {
-//       alert("Failed to delete message");
-//     }
-//   };
-
-//   if (loading) return <p>Loading chats...</p>;
-//   if (error) return <p>Something went wrong!</p>;
-
-//   return (
-//     <div>
-//       <h2>All Messages</h2>
-
-//       {messages.map((msg) => (
-//         <div
-//           key={msg._id}
-//           style={{
-//             borderBottom: "1px solid #ddd",
-//             marginBottom: "10px",
-//             paddingBottom: "10px",
-//           }}
-//         >
-//           <p><strong>From:</strong> {msg.sender?.name}</p>
-//           <p><strong>To:</strong> {msg.receiver?.name}</p>
-//           <p>{msg.content}</p>
-
-//           <button
-//             onClick={() => handleDelete(msg._id)}
-//             disabled={deleteLoading}
-//             style={{ color: "red" }}
-//           >
-//             {deleteLoading ? "Deleting..." : "Delete"}
-//           </button>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Message;
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useAllChats } from "../Hooks/Message";
@@ -134,11 +83,11 @@ const Message = () => {
                 {msg.sender?.name || "Unknown"}
               </p>
               <p className="text-white text-sm">
+                <span className="font-semibold">Message:</span> {msg.message}
+              </p>
+              <p className="text-white text-sm">
                 <span className="font-semibold">To:</span>{" "}
                 {msg.receiver?.name || "Unknown"}
-              </p>
-              <p className="text-white/80 text-sm border-t border-white/20 pt-2">
-                {msg.content}
               </p>
             </div>
 
